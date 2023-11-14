@@ -21,6 +21,9 @@ public class Product {
     @GeneratedValue(generator = "system-uuid")
     private String id;
 
+    @Column(name = "code", length = 100, nullable = false, unique = true)
+    private String code;
+
     @Column(name = "name", length = 100, nullable = false, unique = true)
     private String name;
 

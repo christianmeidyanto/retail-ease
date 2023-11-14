@@ -1,5 +1,9 @@
 package com.retailease.service;
 
-public interface AdminService {
+import com.retailease.entity.Admin;
+import com.retailease.model.response.AdminResponse;
 
+public interface AdminService {
+    AdminResponse getAdminByUsername(String username);
+    Admin getById(String id);
 }

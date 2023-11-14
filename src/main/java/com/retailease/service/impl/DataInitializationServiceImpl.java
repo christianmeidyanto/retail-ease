@@ -25,7 +25,5 @@ public class DataInitializationServiceImpl implements CommandLineRunner {
                     .build();
             authServiceimpl.registerNewAdmin(request);
         }
-
-        /*DataInitialization For Product*/
     }
 }

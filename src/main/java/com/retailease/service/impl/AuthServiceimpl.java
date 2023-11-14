@@ -113,7 +113,7 @@ public class AuthServiceimpl implements AuthService {
                     .username(credential.getUsername())
                     .build();
         } catch (DataIntegrityViolationException exception) {
-            throw new ResponseStatusException(HttpStatus.CONFLICT, "admin already exist");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "admin already exist");
         }
     }
 

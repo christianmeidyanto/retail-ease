@@ -4,6 +4,21 @@ Content-Type: application/json
 Accept: application/json
 
 {
-"username": "admin12",
+"username": "admin123",
 "password": "jOnrlxgQab"
 }
+
+### CREATE NEW PRODUCT
+POST http://localhost:8080/api/v1/product
+Content-Type: application/json
+Accept: application/json
+
+{
+  "productCode": "TB0001",
+  "productName": "TBA 30 gram Red",
+  "price": 13500,
+  "stock": 100
+}
+
+### GET BY ID PRODUCT
+GET http://localhost:8080/api/v1/product/1327dcc2-ba08-4eb0-bfd6-14972cd92c9

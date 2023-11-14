@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -43,10 +44,12 @@ public class SecurityConfiguration {
                 .exceptionHandling().accessDeniedHandler(customAccessDeniedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests()
+                .antMatchers("/swagger-ui/**", "v3/api/docs/**").permitAll()
                 .antMatchers("/api/v1/auth/**").permitAll()
-//                .antMatchers("/swagger-ui/**", "v3/api/docs/**").permitAll()
-                .antMatchers("/**").permitAll()
-//                .antMatchers(HttpMethod.GET,"/api/v1/product").permitAll()
+
+                /*If want turn on swagger*/
+                /*.antMatchers("/**").permitAll()*/
+
                 .anyRequest().authenticated()
                 .and().addFilterBefore(authTokenFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();

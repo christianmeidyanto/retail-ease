@@ -26,38 +26,23 @@ public class AuthController {
 
     private final AuthService authService;
 
+
 //    @PostMapping(
-//            path = "/register",
+//            path = "/register-admin",
 //            consumes = MediaType.APPLICATION_JSON_VALUE,
 //            produces = MediaType.APPLICATION_JSON_VALUE
 //    )
-//    public ResponseEntity<?> register(@RequestBody RegisterCustomerRequest request){
-//        RegisterCustomerResponse newCustomer = authService.registerNewCustomer(request);
+//    public ResponseEntity<?> registerAdmin(@RequestBody RegisterAdminRequest request) {
+//        RegisterAdminResponse register = authService.registerNewAdmin(request);
 //
 //        CommonResponse<Object> commonResponse = CommonResponse.builder()
 //                .statusCode(HttpStatus.CREATED.value())
-//                .message("Successfully registered")
-//                .data(newCustomer)
+//                .message("successfully registered")
+//                .data(register)
 //                .build();
+//
 //        return ResponseEntity.status((HttpStatus.CREATED)).body(commonResponse);
 //    }
-
-    @PostMapping(
-            path = "/register-admin",
-            consumes = MediaType.APPLICATION_JSON_VALUE,
-            produces = MediaType.APPLICATION_JSON_VALUE
-    )
-    public ResponseEntity<?> registerAdmin(@RequestBody RegisterAdminRequest request) {
-        RegisterAdminResponse register = authService.registerNewAdmin(request);
-
-        CommonResponse<Object> commonResponse = CommonResponse.builder()
-                .statusCode(HttpStatus.CREATED.value())
-                .message("successfully registered")
-                .data(register)
-                .build();
-
-        return ResponseEntity.status((HttpStatus.CREATED)).body(commonResponse);
-    }
 
     @PostMapping(
             path = "/login",
