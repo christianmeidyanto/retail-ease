@@ -44,10 +44,9 @@ public class SecurityConfiguration {
                 .exceptionHandling().accessDeniedHandler(customAccessDeniedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests()
-                .antMatchers("/swagger-ui/**", "v3/api/docs/**").permitAll()
                 .antMatchers("/api/v1/auth/**").permitAll()
 
-                /*If want turn on swagger*/
+                /*If want turn on swagger ui*/
                 /*.antMatchers("/**").permitAll()*/
 
                 .anyRequest().authenticated()
