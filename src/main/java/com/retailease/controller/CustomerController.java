@@ -47,7 +47,7 @@ public class CustomerController {
         } catch (Exception exception) {
             return ResponseEntity.status((HttpStatus.BAD_REQUEST)).body(CommonResponse.builder()
                     .statusCode(HttpStatus.BAD_REQUEST.value())
-                    .message("Failed to create customer : {}" + exception.getMessage())
+                    .message("Failed to create customer : " + exception.getMessage())
                     .data(null)
                     .build());
         }
@@ -66,7 +66,7 @@ public class CustomerController {
         } catch (NoSuchElementException e) {
             return ResponseEntity.status((HttpStatus.BAD_REQUEST)).body(CommonResponse.builder()
                     .statusCode(HttpStatus.BAD_REQUEST.value())
-                    .message("Get by id customer : {}" + e.getMessage())
+                    .message("Get by id customer : " + e.getMessage())
                     .data(null)
                     .build());
         }
@@ -74,24 +74,31 @@ public class CustomerController {
 
     @GetMapping
     public ResponseEntity<?> getListProduct(@RequestParam Integer page, @RequestParam Integer size) {
-
-        Page<CustomerResponse> allCustomer = customerService.getAllCustomer(page, size);
-        PageResponse pageResponse = PageResponse.builder()
-                .currentPage(page)
-                .totalPage(allCustomer.getTotalPages())
-                .size(size)
-                .build();
-        CommonResponse<Object> commonResponse = CommonResponse.builder()
-                .statusCode(HttpStatus.OK.value())
-                .message("Successfully get all customer")
-                .data(allCustomer.getContent())
-                .paging(pageResponse)
-                .build();
-        return ResponseEntity.status((HttpStatus.OK)).body(commonResponse);
+        try {
+            Page<CustomerResponse> allCustomer = customerService.getAllCustomer(page, size);
+            PageResponse pageResponse = PageResponse.builder()
+                    .currentPage(page)
+                    .totalPage(allCustomer.getTotalPages())
+                    .size(size)
+                    .build();
+            CommonResponse<Object> commonResponse = CommonResponse.builder()
+                    .statusCode(HttpStatus.OK.value())
+                    .message("Successfully get all customer")
+                    .data(allCustomer.getContent())
+                    .paging(pageResponse)
+                    .build();
+            return ResponseEntity.status((HttpStatus.OK)).body(commonResponse);
+        }catch (Exception exception) {
+            return ResponseEntity.status((HttpStatus.BAD_REQUEST)).body(CommonResponse.builder()
+                    .statusCode(HttpStatus.BAD_REQUEST.value())
+                    .message("Failed to get all customer : " + exception.getMessage())
+                    .data(null)
+                    .build());
+        }
     }
 
     @PutMapping
-    public ResponseEntity<?> updateProduct(@RequestBody CustomerRequest request) {
+    public ResponseEntity<?> updateCustomer(@RequestBody CustomerRequest request) {
         try {
             CustomerResponse customerResponse = customerService.updateCustomer(request);
             return ResponseEntity.status(HttpStatus.OK)
@@ -103,7 +110,7 @@ public class CustomerController {
         }catch (Exception exception) {
             return ResponseEntity.status((HttpStatus.BAD_REQUEST)).body(CommonResponse.builder()
                     .statusCode(HttpStatus.BAD_REQUEST.value())
-                    .message("Failed to update customer :{}" + exception.getMessage())
+                    .message("Failed to update customer : " + exception.getMessage())
                     .data(null)
                     .build());
         }

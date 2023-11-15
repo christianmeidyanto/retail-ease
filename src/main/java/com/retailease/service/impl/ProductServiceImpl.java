@@ -57,7 +57,7 @@ public class ProductServiceImpl implements ProductService {
         if(product1.isPresent()){
             product1.get().setCode(product.getProductCode());
             product1.get().setName(product.getProductName());
-            productRepository.save(product1.get());
+            productRepository.saveAndFlush(product1.get());
             if(!productPrice1.getPrice().equals(product.getPrice())){
                 ProductPrice productPrice = ProductPrice.builder()
                         .price(product.getPrice())
@@ -83,12 +83,6 @@ public class ProductServiceImpl implements ProductService {
         return null;
     }
 
-
-//    @Transactional
-//    @Override
-//    public void deleteById(String id) {
-//        productRepository.deleteById(id);
-//    }
 
 
     @Override

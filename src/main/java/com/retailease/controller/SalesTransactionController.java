@@ -64,14 +64,14 @@ public class SalesTransactionController {
             SalesTransactionResponse transaction = salesTransactionService.getTransactionById(id);
             CommonResponse<Object> commonResponse = CommonResponse.builder()
                     .statusCode(HttpStatus.OK.value())
-                    .message("Successfully get by id product")
+                    .message("Successfully get by id sales transaction")
                     .data(transaction)
                     .build();
             return ResponseEntity.status((HttpStatus.OK)).body(commonResponse);
         } catch (NoSuchElementException e) {
             CommonResponse<Object> commonResponse = CommonResponse.builder()
                     .statusCode(HttpStatus.BAD_REQUEST.value())
-                    .message("Get by id sales transaction" + e.getMessage())
+                    .message("Get by id sales transaction : " + e.getMessage())
                     .data(null)
                     .build();
             return ResponseEntity.status((HttpStatus.BAD_REQUEST)).body(commonResponse);

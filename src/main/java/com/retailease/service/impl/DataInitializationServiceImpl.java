@@ -2,6 +2,7 @@ package com.retailease.service.impl;
 
 import com.retailease.model.request.RegisterAdminRequest;
 import com.retailease.repository.AdminRepository;
+import com.retailease.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Service;
 public class DataInitializationServiceImpl implements CommandLineRunner {
 
     private final AdminRepository adminRepository;
-    private final AuthServiceimpl authServiceimpl;
+    private final AuthService authService;
 
     @Override
     public void run(String... args) throws Exception {
@@ -23,7 +24,7 @@ public class DataInitializationServiceImpl implements CommandLineRunner {
                     .username("admin123")
                     .password("jOnrlxgQab")
                     .build();
-            authServiceimpl.registerNewAdmin(request);
+            authService.registerNewAdmin(request);
         }
     }
 }

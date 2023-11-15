@@ -42,7 +42,7 @@ public class ProductController {
         } catch (Exception exception) {
             return ResponseEntity.status((HttpStatus.BAD_REQUEST)).body(CommonResponse.builder()
                     .statusCode(HttpStatus.BAD_REQUEST.value())
-                    .message("Failed create product :{}" + exception.getMessage())
+                    .message("Failed create product : " + exception.getMessage())
                     .data(null)
                     .build());
         }
@@ -61,7 +61,7 @@ public class ProductController {
         } catch (NoSuchElementException e) {
             return ResponseEntity.status((HttpStatus.BAD_REQUEST)).body(CommonResponse.builder()
                     .statusCode(HttpStatus.BAD_REQUEST.value())
-                    .message("Get by id product" + e.getMessage())
+                    .message("Get by id product :" + e.getMessage())
                     .data(null)
                     .build());
         }
@@ -98,7 +98,7 @@ public class ProductController {
         }catch (Exception exception) {
             return ResponseEntity.status((HttpStatus.BAD_REQUEST)).body(CommonResponse.builder()
                     .statusCode(HttpStatus.BAD_REQUEST.value())
-                    .message("Failed update product :{}" + exception.getMessage())
+                    .message("Failed update product : " + exception.getMessage())
                     .data(null)
                     .build());
         }

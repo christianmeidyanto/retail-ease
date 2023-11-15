@@ -48,45 +48,6 @@ public class AuthServiceimpl implements AuthService {
 
     private final UserCredentialRepository userCredentialRepository;
 
-//    @Transactional
-//    @Override
-//    public RegisterCustomerResponse registerNewCustomer(RegisterCustomerRequest request) {
-//        validationService.validate(request);
-//        try {
-//            Role role = roleService.getOrsave(ERole.ROLE_CUSTOMER);
-//            UserCredential userCredential = UserCredential.builder()
-//                    .username(request.getUsername())
-//                    .password(bcryptUtils.hashPassword(request.getPassword()))
-//                    .roles(List.of(role))
-//                    .build();
-//            userCredentialRepository.saveAndFlush(userCredential);
-//
-//
-//            Customer newCustomer = Customer.builder()
-//                    .nama(request.getName())
-//                    .email(request.getEmail())
-//                    .nomerTelepon(request.getNomerTelepon())
-//                    .userCredential(userCredential)
-//                    .isActive(false)
-//                    .isActivePeminjaman(false)
-//                    .build();
-//
-//            customerRepository.save(newCustomer);
-//
-//
-//            return RegisterCustomerResponse.builder()
-//                    .id(newCustomer.getId())
-//                    .username(userCredential.getUsername())
-//                    .nama(newCustomer.getNama())
-//                    .email(newCustomer.getEmail())
-//                    .nomerTelepon(newCustomer.getNomerTelepon())
-//                    .build();
-//        } catch (DataIntegrityViolationException e){
-//            throw new ResponseStatusException(HttpStatus.CONFLICT, "User already exist");
-//        }
-//
-//    }
-
     @Transactional
     @Override
     public RegisterAdminResponse registerNewAdmin(RegisterAdminRequest request) {

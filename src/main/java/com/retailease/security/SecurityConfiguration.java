@@ -47,6 +47,7 @@ public class SecurityConfiguration {
                 .antMatchers("/api/v1/auth/**").permitAll()
 
                 /*If want turn on swagger ui*/
+                /*If want run controller test*/
                 /*.antMatchers("/**").permitAll()*/
 
                 .anyRequest().authenticated()
